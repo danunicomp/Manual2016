@@ -217,11 +217,7 @@ void clsKBDisplay::ShowKB_Standard_5250(void) {
     int StartX = 8;
     int StartY = 0;
 
-    start_color();
-    init_pair(1, COLOR_BLACK, COLOR_WHITE);
-    init_pair(2, COLOR_WHITE, COLOR_BLACK);
-    
-    attron(COLOR_PAIR(1));
+
     move(0,0);
    // std::cout << getmaxyx();
     int x;
@@ -239,7 +235,7 @@ void clsKBDisplay::ShowKB_Standard_5250(void) {
  //   printstr (header);
     refresh();
     
-    attron(COLOR_PAIR(2));
+    attron(COLOR_PAIR(1));
     
     
     // START TOP FUNCTION KEYS    

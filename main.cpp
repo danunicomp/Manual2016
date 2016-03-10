@@ -23,7 +23,7 @@
 
 using namespace std;
 
-const string VERSION = "2.0.20160309.A";
+const string VERSION = "2.0.20160310.A";
 
 /*
  * 
@@ -32,6 +32,7 @@ int main(int argc, char** argv) {
 
     clsKBDisplay ShowKeyboard;
     ShowKeyboard.DisplayKeyboard(KB_MOD_5250);
+    usleep(100000);
     
     int x = 1;
     int order[134] = {
@@ -48,10 +49,10 @@ int main(int argc, char** argv) {
     // TEST GETTING BUFFER
     
     // sample codes
-    struct scancodes { int position; bool makebreak; vector<int> codesstream;  };
+    struct scancode { int position; bool makebreak; vector<int> codesstream;  };
     //scancodes codelist[134];
-    vector<scancodes> codelist;
-    scancodes temp;
+    vector<scancode> codelist;
+    scancode temp;
     
     temp.position = 122;
     temp.makebreak = 1;
@@ -61,12 +62,186 @@ int main(int argc, char** argv) {
     temp.codesstream.push_back(0);
     temp.codesstream.push_back(0);
     temp.codesstream.push_back(0);
-    
-    
     codelist.push_back(temp);
+    temp.codesstream.clear();
     
-    cout << codelist[0].position;
+    temp.position = 122;
+    temp.makebreak = 0;
+    temp.codesstream.push_back(170);
+    temp.codesstream.push_back(187);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    codelist.push_back(temp);
+    temp.codesstream.clear();
     
+    temp.position = 123;
+    temp.makebreak = 1;
+    temp.codesstream.push_back(42);
+    temp.codesstream.push_back(60);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    codelist.push_back(temp);
+    temp.codesstream.clear();
+    
+    temp.position = 123;
+    temp.makebreak = 0;
+    temp.codesstream.push_back(170);
+    temp.codesstream.push_back(188);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    codelist.push_back(temp);
+    temp.codesstream.clear();
+    
+    temp.position = 124;
+    temp.makebreak = 1;
+    temp.codesstream.push_back(42);
+    temp.codesstream.push_back(61);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    codelist.push_back(temp);
+    temp.codesstream.clear();
+    
+    temp.position = 124;
+    temp.makebreak = 0;
+    temp.codesstream.push_back(170);
+    temp.codesstream.push_back(189);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    codelist.push_back(temp);
+    temp.codesstream.clear();    
+    
+    temp.position = 125;
+    temp.makebreak = 1;
+    temp.codesstream.push_back(42);
+    temp.codesstream.push_back(62);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    codelist.push_back(temp);
+    temp.codesstream.clear();
+    
+    temp.position = 125;
+    temp.makebreak = 0;
+    temp.codesstream.push_back(170);
+    temp.codesstream.push_back(190);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    codelist.push_back(temp);
+    temp.codesstream.clear();  
+
+    temp.position = 126;
+    temp.makebreak = 1;
+    temp.codesstream.push_back(42);
+    temp.codesstream.push_back(63);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    codelist.push_back(temp);
+    temp.codesstream.clear();
+    
+    temp.position = 126;
+    temp.makebreak = 0;
+    temp.codesstream.push_back(170);
+    temp.codesstream.push_back(191);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    codelist.push_back(temp);
+    temp.codesstream.clear();     
+    
+    
+ //   cout << codelist[0].position << endl;
+
+        initscr();
+    noecho();
+        start_color();
+    init_pair(1, COLOR_WHITE, COLOR_BLACK);
+    init_pair(2, COLOR_RED, COLOR_BLACK);
+    init_pair(3, COLOR_GREEN, COLOR_BLACK);
+    init_pair(4, COLOR_YELLOW, COLOR_BLACK);
+    
+    // test to iterate thru test codelist
+    int currentposition;
+    clsGetCodes GetUnicode;
+    std::vector<int> wholebuffer;
+    vector<int> trimmedbuffer;
+for (int i=0; i<codelist.size(); i++) {
+     system("stty -echo");  
+             move(ShowKeyboard.keyposition[codelist[i].position].Y_location, ShowKeyboard.keyposition[codelist[i].position].X_location );    
+        attron(COLOR_PAIR(4));
+             addch(ACS_CKBOARD);    refresh();
+    wholebuffer = GetUnicode.GetUnicodeBuffer();
+                  for (x=0; x<6; ++x)  {
+                      trimmedbuffer.push_back(wholebuffer[x]);
+                      // cout << wholebuffer[x] << "\t";
+                  }
+  //  move(20,0);
+    if (codelist[i].codesstream == trimmedbuffer) {
+        move(ShowKeyboard.keyposition[codelist[i].position].Y_location, ShowKeyboard.keyposition[codelist[i].position].X_location );    
+        attron(COLOR_PAIR(3));
+        addch(ACS_CKBOARD);    refresh();
+        move(18,1);
+
+        printw("Position %i good", codelist[i].position);
+        refresh();
+        //  cout << "Position: " << codelist[i].position << " GOOD" << endl;
+    }
+    else
+    {
+        move(ShowKeyboard.keyposition[codelist[i].position].Y_location, ShowKeyboard.keyposition[codelist[i].position].X_location );    
+        attron(COLOR_PAIR(2));
+        addch(ACS_CKBOARD);    refresh();
+      //  cout << "Position: " << codelist[i].position << " BAD";
+      //  cout << "   Expected: " << codelist[i].codesstream[0] << " " << codelist[i].codesstream[1]<< "   Read: " << trimmedbuffer[0] << " " << trimmedbuffer[1]<< " " << trimmedbuffer[2]<< " " << trimmedbuffer[3]<< " " << trimmedbuffer[4]<< " " << trimmedbuffer[5] << endl;
+        if (codelist[i].makebreak == 1) {   
+            move(18,1);
+            printw("Position %i MAKE FAIL", codelist[i].position);
+            move(19,1);
+
+            printw("Read: ");
+            int tmp;
+            for (tmp=0; tmp<6; ++tmp) {
+                printw("%i ", trimmedbuffer[tmp]);
+                //addch(' ');
+            }
+            move(20,1);
+            printw("Expected: ");
+            for (tmp=0; tmp<6; ++tmp) {
+                printw("%i ", codelist[i].codesstream[tmp]);
+                //addch(' ');
+            }            
+            refresh();
+               system("stty echo");
+               GetUnicode.clean_up(GetUnicode.getfd(NULL));
+               break;
+            
+        }
+    }
+                  wholebuffer.clear();
+                  trimmedbuffer.clear();
+            system("stty echo");
+   // cout << codelist[i].position << endl;
+}
+
+        endwin(); 
+    return 0;
+    
+ /*   
     clsGetCodes GetUnicode;
     std::vector<int> wholebuffer;
           int exits = 0;
@@ -91,7 +266,8 @@ int main(int argc, char** argv) {
             system("stty echo");
 //            free(wholebuffer)  ;
         }
-    
+   
+  */ 
 /*    
     initscr();
     noecho();

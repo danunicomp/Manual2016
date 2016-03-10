@@ -24,12 +24,14 @@ public:
     virtual ~clsGetCodes();
     std::vector<int> GetUnicodeBuffer (void);
    void Diagnostic (void);
+        void clean_up(int) ;
+         int getfd(const char *);
 private:
-     void clean_up(int) ;
+
      void get_mode(int);
      int is_a_console(int);
      int open_a_console(const char *);
-     int getfd(const char *);
+    
 
      int oldkbmode;
      
