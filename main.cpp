@@ -19,6 +19,7 @@
 #include <unistd.h> // for usleep
 
 #include "clsKBDisplay.h"
+#include "clsGetCodes.h"
 
 using namespace std;
 
@@ -42,7 +43,56 @@ int main(int argc, char** argv) {
         108,103,98,93,  88,83,78,   57,55,54,53,52,51,50,49,48,47,46,45,44, 68,73,
         74,69,  58,60,61,62,64, 84, 99,104
     };
+
+    ////////////////////////////////////////////
+    // TEST GETTING BUFFER
     
+    // sample codes
+    struct scancodes { int position; bool makebreak; vector<int> codesstream;  };
+    //scancodes codelist[134];
+    vector<scancodes> codelist;
+    scancodes temp;
+    
+    temp.position = 122;
+    temp.makebreak = 1;
+    temp.codesstream.push_back(42);
+    temp.codesstream.push_back(59);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    temp.codesstream.push_back(0);
+    
+    
+    codelist.push_back(temp);
+    
+    cout << codelist[0].position;
+    
+    clsGetCodes GetUnicode;
+    std::vector<int> wholebuffer;
+          int exits = 0;
+        while(1 && exits < 3) {
+              system("stty -echo");
+            wholebuffer = GetUnicode.GetUnicodeBuffer();
+            if (wholebuffer[0] == 45) ++exits;
+            else exits = 0;
+            for (x=0; x<6; ++x)  {
+                cout << wholebuffer[x] << "\t";
+            }
+            if (wholebuffer[18] == 1999) {
+                cout << "MAKE" << endl;
+            }
+            else if (wholebuffer[18] == 999) {
+                cout << "BREAK" << endl << endl;
+            }
+            else {
+                cout << endl;
+            }
+            wholebuffer.clear();
+            system("stty echo");
+//            free(wholebuffer)  ;
+        }
+    
+/*    
     initscr();
     noecho();
     
@@ -54,7 +104,7 @@ int main(int argc, char** argv) {
     }
    
     endwin(); 
-    
+ */   
     
     return 0;
 }

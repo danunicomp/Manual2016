@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>clsGetCodes.h</itemPath>
       <itemPath>clsKBDisplay.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -13,6 +14,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>clsGetCodes.cpp</itemPath>
       <itemPath>clsKBDisplay.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -42,6 +44,10 @@
           <commandLine>-lncurses</commandLine>
         </ccTool>
       </compileType>
+      <item path="clsGetCodes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="clsGetCodes.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="clsKBDisplay.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="clsKBDisplay.h" ex="false" tool="3" flavor2="0">
@@ -71,6 +77,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="clsGetCodes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="clsGetCodes.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="clsKBDisplay.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="clsKBDisplay.h" ex="false" tool="3" flavor2="0">
