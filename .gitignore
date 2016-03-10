@@ -45,3 +45,6 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.o
+dist/Debug/GNU-Linux/manuall2
+*.d
