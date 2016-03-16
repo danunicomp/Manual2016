@@ -6,6 +6,8 @@
                    projectFiles="true">
       <itemPath>clsGetCodes.h</itemPath>
       <itemPath>clsKBDisplay.h</itemPath>
+      <itemPath>clsParseWSE.h</itemPath>
+      <itemPath>unicomp.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -16,6 +18,7 @@
                    projectFiles="true">
       <itemPath>clsGetCodes.cpp</itemPath>
       <itemPath>clsKBDisplay.cpp</itemPath>
+      <itemPath>clsParseWSE.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -29,6 +32,7 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>WSE_5250.txt</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -44,6 +48,8 @@
           <commandLine>-lncurses</commandLine>
         </ccTool>
       </compileType>
+      <item path="WSE_5250.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="clsGetCodes.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="clsGetCodes.h" ex="false" tool="3" flavor2="0">
@@ -52,7 +58,13 @@
       </item>
       <item path="clsKBDisplay.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="clsParseWSE.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="clsParseWSE.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="unicomp.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -77,6 +89,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="WSE_5250.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="clsGetCodes.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="clsGetCodes.h" ex="false" tool="3" flavor2="0">
@@ -85,7 +99,13 @@
       </item>
       <item path="clsKBDisplay.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="clsParseWSE.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="clsParseWSE.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="unicomp.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

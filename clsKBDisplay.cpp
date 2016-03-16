@@ -45,13 +45,7 @@ void clsKBDisplay::DisplayKeyboard(int model) {
 }
 
 void clsKBDisplay::Positions_Standard(void) {
-    
-    int x;
-    for (x=0; x<=134; ++x) {
-       keyposition[x].X_location = 0;
-        keyposition[x].Y_location = 0;
-    }
-    
+   
     keyposition[1].X_location = 15;     keyposition[1].Y_location = 7;
     keyposition[2].X_location = 17;     keyposition[2].Y_location = 7;
     keyposition[3].X_location = 19;     keyposition[3].Y_location = 7;
@@ -219,7 +213,6 @@ void clsKBDisplay::ShowKB_Standard_5250(void) {
 
 
     move(0,0);
-   // std::cout << getmaxyx();
     int x;
     for (x=1; x<=74; ++x) {
         addch(' ');
