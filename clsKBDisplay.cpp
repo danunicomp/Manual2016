@@ -214,7 +214,7 @@ void clsKBDisplay::ShowKB_Standard_5250(void) {
 
     move(0,0);
     int x;
-    for (x=1; x<=74; ++x) {
+    for (x=1; x<=80; ++x) {
         addch(' ');
     }
     std::string header = "test";
@@ -224,7 +224,7 @@ void clsKBDisplay::ShowKB_Standard_5250(void) {
     mvprintw(0,(col-header.length())/2,"%s",mesg);
     
     
-    move( (74-header.length())/2, 0);
+    move( (80-header.length())/2, 0);
  //   printstr (header);
     refresh();
     
