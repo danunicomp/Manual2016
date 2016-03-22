@@ -12,7 +12,7 @@
 
 using namespace std;
 
-const string VERSION = "2.0.20160316.A";
+const string VERSION = "2.0.20160322.A";
 
 struct scancode { int position; bool makebreak; vector<int> codesstream;  };
     
