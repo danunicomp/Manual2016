@@ -12,7 +12,7 @@
 
 using namespace std;
 
-const string VERSION = "2.0.20160322.A";
+const string VERSION = "2.0.20160324.b";
 
 struct scancode { int position; bool makebreak; vector<int> codesstream;  };
     
@@ -42,16 +42,17 @@ int main(int argc, char** argv) {
     std::vector<int> wholebuffer;
     vector<int> trimmedbuffer;
     
+    // BEGIN TEST
     for (int i=0; i<codelist.size(); i++) {
         system("stty -echo");  
         move(ShowKeyboard.keyposition[codelist[i].position].Y_location, ShowKeyboard.keyposition[codelist[i].position].X_location );    
         attron(COLOR_PAIR(4));
         addch(ACS_CKBOARD);    refresh();
-        wholebuffer = GetUnicode.GetUnicodeBuffer();
+        wholebuffer = GetUnicode.GetUnicodeBuffer();    // get codes pressed
         for (x=0; x<6; ++x)  {
             trimmedbuffer.push_back(wholebuffer[x]);
         }
-        if (codelist[i].codesstream == trimmedbuffer) {
+        if (codelist[i].codesstream == trimmedbuffer && codelist[i].makebreak == wholebuffer[18]) {     // compair with expected
             move(ShowKeyboard.keyposition[codelist[i].position].Y_location, ShowKeyboard.keyposition[codelist[i].position].X_location );    
             attron(COLOR_PAIR(3));
             addch(ACS_CKBOARD);    refresh();
@@ -84,9 +85,11 @@ int main(int argc, char** argv) {
                 break;
             }
         }
+        
         wholebuffer.clear();
         trimmedbuffer.clear();
         system("stty echo");
+        usleep(100);
     }
 
     endwin(); 

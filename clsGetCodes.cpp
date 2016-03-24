@@ -112,11 +112,11 @@ using namespace std;
         }
 
         if (buf[0] < 128) {
-            buf[18] = 1999;
+            buf[18] = 1;
         }
         else
         {
-            buf[18] = 999;
+            buf[18] = 0;
         }
 
             newbuf.clear();
