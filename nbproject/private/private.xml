@@ -2,10 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <data xmlns="http://www.netbeans.org/ns/make-project-private/1">
         <activeConfTypeElem>1</activeConfTypeElem>
-        <activeConfIndexElem>1</activeConfIndexElem>
+        <activeConfIndexElem>0</activeConfIndexElem>
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>rfs://pi@192.168.0.210:22/home/pi/manuall2/clsGetCodes.cpp</file>
+            <file>rfs://pi@192.168.0.210:22/home/pi/manuall2/WSE%5F%35%32%35%30%2E%74%78%74</file>
+            <file>rfs://pi@192.168.0.210:22/home/pi/manuall2/main.cpp</file>
+        </group>
     </open-files>
 </project-private>

@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <unistd.h> // for usleep
 
 clsKBDisplay::clsKBDisplay() {
 }
@@ -205,33 +206,43 @@ void clsKBDisplay::Positions_Standard(void) {
    */
 }
 
-void clsKBDisplay::ShowKB_Standard_5250(void) {
+void clsKBDisplay::Show_Header(void) {
     initscr();
     noecho();
+    
+////////////////////
+    start_color();
+    init_pair(10, COLOR_BLACK, COLOR_WHITE);
+    attron(COLOR_PAIR(10));
+    //refresh();
+    
+    move(0,0);
+    for (int x=1; x<=80; ++x) {
+       addch(' ');      // clear top row
+    }
+    refresh();
+    std::string uniheader = "Unicomp Manual Test";
+    int centerx;
+    centerx = (80-uniheader.length())/2;
+    move( 0, centerx);
+    printw ("%s",uniheader.c_str() );
+    
+////////////////////
+    refresh();   
+    endwin();    
+}
+
+void clsKBDisplay::ShowKB_Standard_5250(void) {
+    this->Show_Header();
+    initscr();
+    noecho();
+
     int StartX = 12;
     int StartY = 0;
 
-
     move(0,0);
-  addstr("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
-    int x;
-    for (x=1; x<=80; ++x) {
-        addch(' ');
-    }
-    
-    std::string header = "Unicomp Manual Test";
-    int row,col;
-    char mesg[]="Unicomp Manual Test";	
-    getmaxyx(stdscr,row,col);
- //   mvprintw(0,(col-header.length())/2,"%s",mesg);
-    
-    
-    move( (80-header.length())/2, 0);
- //   printstr (header);
-    refresh();
     
     attron(COLOR_PAIR(1));
-    
     
     // START TOP FUNCTION KEYS    
     move(StartY+1, StartX+8);
@@ -358,27 +369,26 @@ void clsKBDisplay::ShowKB_Standard_5250(void) {
       addch(' '); addch(' ');addch(ACS_VLINE);  
      // END QWERTY
       
-     // BEGIN ASDF
-          move(StartY+10, StartX+6);
+ // BEGIN ASDF
+    move(StartY+10, StartX+6);
     addch(ACS_LTEE);
     addch(ACS_HLINE);addch(ACS_HLINE);
     addch(ACS_BTEE);addch(ACS_TTEE);
-     addch(ACS_BTEE);addch(ACS_TTEE);
-     addch(ACS_BTEE);addch(ACS_TTEE); 
-      addch(ACS_BTEE);addch(ACS_TTEE);
     addch(ACS_BTEE);addch(ACS_TTEE);
-     addch(ACS_BTEE);addch(ACS_TTEE);
-     addch(ACS_BTEE);addch(ACS_TTEE); 
-      addch(ACS_BTEE);addch(ACS_TTEE);
+    addch(ACS_BTEE);addch(ACS_TTEE); 
     addch(ACS_BTEE);addch(ACS_TTEE);
-     addch(ACS_BTEE);addch(ACS_TTEE);
-     addch(ACS_BTEE);addch(ACS_TTEE); 
-      addch(ACS_BTEE);addch(ACS_TTEE);
- addch(ACS_BTEE);addch(ACS_URCORNER) ;
- addch(' '); addch(ACS_VLINE);
+    addch(ACS_BTEE);addch(ACS_TTEE);
+    addch(ACS_BTEE);addch(ACS_TTEE);
+    addch(ACS_BTEE);addch(ACS_TTEE); 
+    addch(ACS_BTEE);addch(ACS_TTEE);
+    addch(ACS_BTEE);addch(ACS_TTEE);
+    addch(ACS_BTEE);addch(ACS_TTEE);
+    addch(ACS_BTEE);addch(ACS_TTEE); 
+    addch(ACS_BTEE);addch(ACS_TTEE);
+    addch(ACS_BTEE);addch(ACS_URCORNER) ;
+    addch(' '); addch(ACS_VLINE);
  
  // MIDDLE ASDF     
- 
      move(StartY+11, StartX+6);
      addch(ACS_VLINE);
      addch(' ');addch(' ');addch(' ');
@@ -417,22 +427,22 @@ void clsKBDisplay::ShowKB_Standard_5250(void) {
     addch(ACS_HLINE);   addch(ACS_RTEE);
  
     // BOTTOM ZXCV ROW
-     move(StartY+13, StartX+6);
-     addch(ACS_VLINE);
-     addch(' ');  addch(' ');
-     addch(ACS_VLINE);
-     addch(' '); addch(ACS_VLINE);
-     addch(' '); addch(ACS_VLINE);
-     addch(' '); addch(ACS_VLINE);
-     addch(' '); addch(ACS_VLINE);
-     addch(' '); addch(ACS_VLINE);
-     addch(' '); addch(ACS_VLINE);
-     addch(' '); addch(ACS_VLINE);
-     addch(' '); addch(ACS_VLINE);
-     addch(' '); addch(ACS_VLINE);
-     addch(' '); addch(ACS_VLINE);
-     addch(' '); addch(ACS_VLINE);
-     addch(' ');addch(' ');addch(' ');addch(' '); addch(ACS_VLINE);
+    move(StartY+13, StartX+6);
+    addch(ACS_VLINE);
+    addch(' ');  addch(' ');
+    addch(ACS_VLINE);
+    addch(' '); addch(ACS_VLINE);
+    addch(' '); addch(ACS_VLINE);
+    addch(' '); addch(ACS_VLINE);
+    addch(' '); addch(ACS_VLINE);
+    addch(' '); addch(ACS_VLINE);
+    addch(' '); addch(ACS_VLINE);
+    addch(' '); addch(ACS_VLINE);
+    addch(' '); addch(ACS_VLINE);
+    addch(' '); addch(ACS_VLINE);
+    addch(' '); addch(ACS_VLINE);
+    addch(' '); addch(ACS_VLINE);
+    addch(' ');addch(' ');addch(' ');addch(' '); addch(ACS_VLINE);
      
      
      //////
@@ -595,68 +605,68 @@ void clsKBDisplay::ShowKB_Standard_5250(void) {
     addch(ACS_VLINE);  addch(' '); 
     addch(ACS_VLINE);
 
- move(StartY+10, StartX+46);
-addch(ACS_LTEE);
-addch(ACS_HLINE);
-addch(ACS_PLUS);
-addch(ACS_HLINE);
-addch(ACS_PLUS);
-addch(ACS_HLINE);
-        addch(ACS_PLUS);
-addch(ACS_HLINE);
-addch(ACS_RTEE);
+    move(StartY+10, StartX+46);
+    addch(ACS_LTEE);
+    addch(ACS_HLINE);
+    addch(ACS_PLUS);
+    addch(ACS_HLINE);
+    addch(ACS_PLUS);
+    addch(ACS_HLINE);
+    addch(ACS_PLUS);
+    addch(ACS_HLINE);
+    addch(ACS_RTEE);
 
- move(StartY+11, StartX+46);
-addch(ACS_VLINE);  addch(' '); 
-addch(ACS_VLINE);  addch(' '); 
-addch(ACS_VLINE);  addch(' '); 
-addch(ACS_VLINE);  addch(' '); 
-addch(ACS_VLINE);
+    move(StartY+11, StartX+46);
+    addch(ACS_VLINE);  addch(' '); 
+    addch(ACS_VLINE);  addch(' '); 
+    addch(ACS_VLINE);  addch(' '); 
+    addch(ACS_VLINE);  addch(' '); 
+    addch(ACS_VLINE);
 
- move(StartY+12, StartX+46);
-addch(ACS_LTEE);
-addch(ACS_HLINE);
-addch(ACS_PLUS);
-addch(ACS_HLINE);
-addch(ACS_PLUS);
-addch(ACS_HLINE);
-        addch(ACS_PLUS);
-addch(ACS_HLINE);
-addch(ACS_RTEE);
+     move(StartY+12, StartX+46);
+    addch(ACS_LTEE);
+    addch(ACS_HLINE);
+    addch(ACS_PLUS);
+    addch(ACS_HLINE);
+    addch(ACS_PLUS);
+    addch(ACS_HLINE);
+    addch(ACS_PLUS);
+    addch(ACS_HLINE);
+    addch(ACS_RTEE);
 
- move(StartY+13, StartX+46);
-addch(ACS_VLINE);  addch(' '); 
-addch(ACS_VLINE);  addch(' '); 
-addch(ACS_VLINE);  addch(' '); 
-addch(ACS_VLINE);  addch(' '); 
-addch(ACS_VLINE);
+    move(StartY+13, StartX+46);
+    addch(ACS_VLINE);  addch(' '); 
+    addch(ACS_VLINE);  addch(' '); 
+    addch(ACS_VLINE);  addch(' '); 
+    addch(ACS_VLINE);  addch(' '); 
+    addch(ACS_VLINE);
 
- move(StartY+14, StartX+46);
-addch(ACS_LTEE);
-addch(ACS_HLINE);
-addch(ACS_BTEE);
-addch(ACS_HLINE);
-addch(ACS_PLUS);
-addch(ACS_HLINE);
-addch(ACS_RTEE);
-addch(' '); 
-addch(ACS_VLINE); 
+    move(StartY+14, StartX+46);
+    addch(ACS_LTEE);
+    addch(ACS_HLINE);
+    addch(ACS_BTEE);
+    addch(ACS_HLINE);
+    addch(ACS_PLUS);
+    addch(ACS_HLINE);
+    addch(ACS_RTEE);
+    addch(' '); 
+    addch(ACS_VLINE); 
 
 
- move(StartY+15, StartX+46);
-addch(ACS_VLINE);  addch(' '); addch(' '); addch(' '); 
-addch(ACS_VLINE);  addch(' ');
-addch(ACS_VLINE);   addch(' ');
-addch(ACS_VLINE);  
+    move(StartY+15, StartX+46);
+    addch(ACS_VLINE);  addch(' '); addch(' '); addch(' '); 
+    addch(ACS_VLINE);  addch(' ');
+    addch(ACS_VLINE);   addch(' ');
+    addch(ACS_VLINE);  
 
- move(StartY+16, StartX+46);
-addch(ACS_LLCORNER);
-addch(ACS_HLINE);addch(ACS_HLINE);addch(ACS_HLINE);
-addch(ACS_BTEE);
-addch(ACS_HLINE);
-addch(ACS_BTEE);
-addch(ACS_HLINE);
-addch(ACS_LRCORNER);
+    move(StartY+16, StartX+46);
+    addch(ACS_LLCORNER);
+    addch(ACS_HLINE);addch(ACS_HLINE);addch(ACS_HLINE);
+    addch(ACS_BTEE);
+    addch(ACS_HLINE);
+    addch(ACS_BTEE);
+    addch(ACS_HLINE);
+    addch(ACS_LRCORNER);
 
 // END NUMPAD
 
@@ -667,7 +677,6 @@ addch(ACS_LRCORNER);
 // ///////
 
     refresh();
-  
     endwin();    
     
 }

@@ -12,12 +12,16 @@
 
 using namespace std;
 
-const string VERSION = "2.0.20160324.b";
+const string VERSION = "2.0.20160329.a";
 
 struct scancode { int position; bool makebreak; vector<int> codesstream;  };
     
 int main(int argc, char** argv) {
     clsKBDisplay ShowKeyboard;
+    //ShowKeyboard.Show_Header();
+    //return(1);
+    
+    //////////////////////////
     ShowKeyboard.DisplayKeyboard(KB_MOD_5250);
     usleep(100000);
 
@@ -105,6 +109,7 @@ vector<scancode> ParseWSE (void) {
     
     clsParseWSE GetWSELayout ;
 
+    
     string line;
     string filename = "/home/pi/manuall2/WSE_5250.txt";
 

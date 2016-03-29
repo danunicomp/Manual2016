@@ -26,7 +26,7 @@ public:
     void DisplayKeyboard(int);
     struct position { int X_location; int Y_location; };
     position keyposition[134];
-    
+    void Show_Header(void);
 private:
     int KeyboardLayout;
     
