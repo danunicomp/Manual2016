@@ -8,11 +8,11 @@
 
 #include "unicomp.h"
 #include "clsKBDisplay.h"
-#include "clsGetCodes.h"
+#include "clsKeyboardTest.h"
 
 using namespace std;
 
-const string VERSION = "2.0.20160329.a";
+const string VERSION = "2.0.20160401.a";
 
 struct scancode { int position; bool makebreak; vector<int> codesstream;  };
     
@@ -22,9 +22,11 @@ int main(int argc, char** argv) {
     //return(1);
     
     //////////////////////////
+    ShowKeyboard.ClearKBArea();
+    ShowKeyboard.DisplayMain();
     ShowKeyboard.DisplayKeyboard(KB_MOD_5250);
     usleep(100000);
-
+    
     int x = 1;
 
     vector<scancode> codelist;
@@ -42,7 +44,7 @@ int main(int argc, char** argv) {
     
     // test to iterate thru test codelist
     int currentposition;
-    clsGetCodes GetUnicode;
+    clsKeyboardTest GetUnicode;
     std::vector<int> wholebuffer;
     vector<int> trimmedbuffer;
     
@@ -60,7 +62,7 @@ int main(int argc, char** argv) {
             move(ShowKeyboard.keyposition[codelist[i].position].Y_location, ShowKeyboard.keyposition[codelist[i].position].X_location );    
             attron(COLOR_PAIR(3));
             addch(ACS_CKBOARD);    refresh();
-            move(18,1);
+            move(19,1);
 
             printw("Position %i good", codelist[i].position);
             refresh();
@@ -69,16 +71,16 @@ int main(int argc, char** argv) {
             attron(COLOR_PAIR(2));
             addch(ACS_CKBOARD);    refresh();
             if (codelist[i].makebreak == 1) {   
-                move(18,1);
-                printw("Position %i MAKE FAIL", codelist[i].position);
                 move(19,1);
+                printw("Position %i MAKE FAIL", codelist[i].position);
+                move(20,1);
 
                 printw("Read: ");
                 int tmp;
                 for (tmp=0; tmp<6; ++tmp) {
                     printw("%i ", trimmedbuffer[tmp]);
                 }
-                move(20,1);
+                move(21,1);
                 printw("Expected: ");
                 for (tmp=0; tmp<6; ++tmp) {
                     printw("%i ", codelist[i].codesstream[tmp]);

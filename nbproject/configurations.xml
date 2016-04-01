@@ -4,8 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>clsGetCodes.h</itemPath>
       <itemPath>clsKBDisplay.h</itemPath>
+      <itemPath>clsKeyboardTest.h</itemPath>
       <itemPath>clsParseWSE.h</itemPath>
       <itemPath>unicomp.h</itemPath>
     </logicalFolder>
@@ -16,8 +16,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>clsGetCodes.cpp</itemPath>
       <itemPath>clsKBDisplay.cpp</itemPath>
+      <itemPath>clsKeyboardTest.cpp</itemPath>
       <itemPath>clsParseWSE.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -50,13 +50,13 @@
       </compileType>
       <item path="WSE_5250.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="clsGetCodes.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="clsGetCodes.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="clsKBDisplay.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="clsKBDisplay.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="clsKeyboardTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="clsKeyboardTest.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="clsParseWSE.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -91,13 +91,13 @@
       </compileType>
       <item path="WSE_5250.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="clsGetCodes.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="clsGetCodes.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="clsKBDisplay.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="clsKBDisplay.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="clsKeyboardTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="clsKeyboardTest.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="clsParseWSE.cpp" ex="false" tool="1" flavor2="0">
       </item>

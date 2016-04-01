@@ -28,10 +28,6 @@ clsKBDisplay::~clsKBDisplay() {
 }
 
 void clsKBDisplay::DisplayKeyboard(int model) {
-    
-  
-    
-    
     switch (model) {
         case KB_MOD_5250:
             ShowKB_Standard_5250();
@@ -43,6 +39,21 @@ void clsKBDisplay::DisplayKeyboard(int model) {
          default:
              break;
     }
+}
+
+void clsKBDisplay::ClearKBArea(void) {
+     initscr();
+    noecho();
+    ////////////////////
+    for (int y=1; y<=16; ++y) {
+        for (int x=0; x<80; ++x) {
+            move(y,x);
+            addch(' '); 
+        }
+    }
+    ////////////////////
+    refresh();   
+    endwin();   
 }
 
 void clsKBDisplay::Positions_Standard(void) {
@@ -206,13 +217,73 @@ void clsKBDisplay::Positions_Standard(void) {
    */
 }
 
-void clsKBDisplay::Show_Header(void) {
+void clsKBDisplay::DisplayMain(void) {
+    
+    initscr();
+    noecho();
+    start_color();
+    init_pair(10, COLOR_BLACK, COLOR_WHITE); //Black text, white background
+    init_pair(9, COLOR_WHITE, COLOR_BLACK );    // white text, black background
+    attron(COLOR_PAIR(9));
+    ////////////////////
+    
+    move(0,0);
+    addch(ACS_ULCORNER);
+    for (int x=1; x<79; ++x) {
+        move(0,x);
+        addch(ACS_HLINE);
+        move(18,x);
+        addch(ACS_HLINE);
+        move (28,x);
+        addch(ACS_HLINE);
+    }
+    move(0,79);
+    addch(ACS_URCORNER);
+    
+    // do sides of framework
+    for (int y=1; y<=27; ++y) {
+        move (y,0);
+        addch(ACS_VLINE);
+        move(y,79);
+        addch(ACS_VLINE);
+    }
+    
+    move(18,0);
+    addch(ACS_LTEE);
+    move(18, 79);
+    addch(ACS_RTEE);
+    
+    move(28,0);
+    addch(ACS_LLCORNER);
+   
+    move(28,79);
+    addch(ACS_LRCORNER);
+    
+    // Header
+    move(0,0);
+    attron(COLOR_PAIR(10));
+    for (int x=1; x<=80; ++x) {
+       addch(' ');      // clear top row
+    }
+    std::string uniheader = "Unicomp Manual Test";
+    int centerx;
+    centerx = (80-uniheader.length())/2;
+    move( 0, centerx);
+    //printw ("%s",uniheader.c_str() );
+    addstr(uniheader.c_str());
+    ////////////////////
+    refresh();   
+    endwin();    
+}
+
+void clsKBDisplay::DisplayFramework(void) {
     initscr();
     noecho();
     
 ////////////////////
     start_color();
-    init_pair(10, COLOR_BLACK, COLOR_WHITE);
+    init_pair(10, COLOR_BLACK, COLOR_WHITE); //Black text, white background
+    init_pair(9, COLOR_WHITE, COLOR_BLACK );    // white text, black background
     attron(COLOR_PAIR(10));
     //refresh();
     
@@ -227,13 +298,25 @@ void clsKBDisplay::Show_Header(void) {
     move( 0, centerx);
     printw ("%s",uniheader.c_str() );
     
+    attron(COLOR_PAIR(10));
+    move (17,0);
+        for (int x=1; x<=80; ++x) {
+       addch(' ');      // clear top row
+    }
+    
+    move (28,0);
+    for (int x=1; x<=80; ++x) {
+       addch(' ');      // clear top row
+    }    
+    //printw("%i", KeyboardLayout);
+   
 ////////////////////
     refresh();   
     endwin();    
 }
 
 void clsKBDisplay::ShowKB_Standard_5250(void) {
-    this->Show_Header();
+ //   this->DisplayFramework();
     initscr();
     noecho();
 
