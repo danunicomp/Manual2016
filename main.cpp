@@ -7,17 +7,24 @@
 #include <fstream>
 
 #include "unicomp.h"
-#include "clsKBDisplay.h"
+//#include "clsKBDisplay.h"
 #include "clsKeyboardTest.h"
+#include "clsKeyboardToTest.h"
+
+/*
+ TODO:
+ *  MAKE GET UNISCAN ITS OWN CLASS OR A LIBRARY
+ * 
+ */
 
 using namespace std;
 
-const string VERSION = "2.0.20160401.a";
+const string VERSION = "2.1.20160405.a";
 
 struct scancode { int position; bool makebreak; vector<int> codesstream;  };
     
 int main(int argc, char** argv) {
-    clsKBDisplay ShowKeyboard;
+    clsKeyboardToTest ShowKeyboard;
     //ShowKeyboard.Show_Header();
     //return(1);
     
@@ -102,14 +109,14 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-#include "clsParseWSE.h"
+//#include "clsParseWSE.h"
 
 vector<scancode> ParseWSE (void) {
     
    vector<scancode> codelist;
     scancode temp;
     
-    clsParseWSE GetWSELayout ;
+    clsKeyboardToTest GetWSELayout ;
     
     string line;
     string filename = "/home/pi/manuall2/WSE_5250.txt";

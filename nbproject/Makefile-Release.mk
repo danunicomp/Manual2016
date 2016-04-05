@@ -35,9 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/clsKBDisplay.o \
 	${OBJECTDIR}/clsKeyboardTest.o \
-	${OBJECTDIR}/clsParseWSE.o \
+	${OBJECTDIR}/clsKeyboardToTest.o \
 	${OBJECTDIR}/main.o
 
 
@@ -65,20 +64,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/manuall2: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/manuall2 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/clsKBDisplay.o: clsKBDisplay.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/clsKBDisplay.o clsKBDisplay.cpp
-
 ${OBJECTDIR}/clsKeyboardTest.o: clsKeyboardTest.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/clsKeyboardTest.o clsKeyboardTest.cpp
 
-${OBJECTDIR}/clsParseWSE.o: clsParseWSE.cpp 
+${OBJECTDIR}/clsKeyboardToTest.o: clsKeyboardToTest.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/clsParseWSE.o clsParseWSE.cpp
+	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/clsKeyboardToTest.o clsKeyboardToTest.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

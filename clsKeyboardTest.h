@@ -16,6 +16,7 @@
 
 #include <vector>
 #include <termios.h>
+#include <string>
 
 // struct scancode { int position; bool makebreak; vector<int> codesstream;  };
 
@@ -29,8 +30,13 @@ public:
     void clean_up(int) ;
     int getfd(const char *);
   //  std::vector<scancode> ParseWSE (void);
+    
+    //PARSING STUFF
+    void GetWSE(std::string);
+    std::vector<std::string> parseline (std::string) ;
+    
 private:
-
+    std::string WSEPath;
      void get_mode(int);
      int is_a_console(int);
      int open_a_console(const char *);
