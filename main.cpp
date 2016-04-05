@@ -110,7 +110,6 @@ vector<scancode> ParseWSE (void) {
     scancode temp;
     
     clsParseWSE GetWSELayout ;
-
     
     string line;
     string filename = "/home/pi/manuall2/WSE_5250.txt";
